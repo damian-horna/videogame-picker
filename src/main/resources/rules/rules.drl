@@ -1,0 +1,7 @@
+package pl.put.poznan.cs
+
+rule "Hello World"
+when
+then
+System.out.print("Hello world from Drools!");
+end

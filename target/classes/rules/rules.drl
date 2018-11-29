@@ -1,0 +1,10 @@
+package pl.put.poznan.cs
+
+import pl.poznan.put.cs.HelloWorld;
+rule "Hello World"
+when
+helloWorldObject: HelloWorld()
+then
+helloWorldObject.showMessage();
+System.out.print(" from Drools!");
+end
