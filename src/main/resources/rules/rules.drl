@@ -7,6 +7,6 @@ import java.util.Arrays;
 rule "Initialization"
 when
 then
-    insert(new Question("Question", new ArrayList<Integer>(Arrays.asList("odp1", "odp2"))))
+    insert(new Question("Question", new ArrayList<String>(Arrays.asList("odp1", "odp2"))));
     System.out.println("Initialization complete");
 end

@@ -13,7 +13,7 @@ public class VideoGamePickerTest {
         videoGamePickerTest.executeRules();
     }
 
-    public void executeRules() {
+    private void executeRules() {
         KieServices ks = KieServices.Factory.get();
         BasicConfigurator.configure();
         Logger.getLogger(VideoGamePickerTest.class).setLevel(Level.OFF);

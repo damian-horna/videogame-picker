@@ -1,10 +1,12 @@
 package pl.put.poznan.cs
+import pl.poznan.put.cs.Question;
+import pl.poznan.put.cs.Answer;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-import pl.poznan.put.cs.HelloWorld;
-rule "Hello World"
+rule "Initialization"
 when
-helloWorldObject: HelloWorld()
 then
-helloWorldObject.showMessage();
-System.out.print(" from Drools!");
+    insert(new Question("Question", new ArrayList<String>(Arrays.asList("odp1", "odp2"))));
+    System.out.println("Initialization complete");
 end
