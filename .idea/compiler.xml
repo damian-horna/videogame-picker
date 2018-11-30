@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="meaningfullname" />
+        <module name="videogame-picker" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="videogame-picker" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

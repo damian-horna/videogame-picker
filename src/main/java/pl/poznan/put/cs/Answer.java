@@ -1,25 +1,26 @@
 package pl.poznan.put.cs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Answer {
     private String content;
     private Question nextQuestion;
     private boolean isLastAnswer;
-    private List<String> finalAnswer = new ArrayList<String>();
+    private String finalAnswer;
 
-    public Answer(String content, Question nextQuestion, List<String> finalAnswer) {
+    public Answer(String content, Question nextQuestion, String finalAnswer) {
         this.content = content;
         this.nextQuestion = nextQuestion;
-        this.isLastAnswer =true;
+        this.isLastAnswer = true;
         this.finalAnswer = finalAnswer;
+    }
+
+    public Answer() {
     }
 
     public Answer(String content, Question nextQuestion) {
         this.content = content;
         this.nextQuestion = nextQuestion;
         this.isLastAnswer = false;
+        this.finalAnswer = "";
     }
 
     public String getContent() {
@@ -46,11 +47,11 @@ public class Answer {
         isLastAnswer = lastAnswer;
     }
 
-    public List<String> getFinalAnswer() {
+    public String getFinalAnswer() {
         return finalAnswer;
     }
 
-    public void setFinalAnswer(List<String> finalAnswer) {
+    public void setFinalAnswer(String finalAnswer) {
         this.finalAnswer = finalAnswer;
     }
 }
