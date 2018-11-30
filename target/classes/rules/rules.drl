@@ -51,6 +51,7 @@ then
     Question nextQuestion = chosenAnswer.getNextQuestion();
     ask(nextQuestion);
     insert(nextQuestion);
+    update(nextQuestion);
     retract(q);
 end
 
@@ -61,6 +62,7 @@ then
     System.out.println(chosenAnswer.getContent());
     retract(q);
 end
+
 
 
 function void ask(Question question) {
