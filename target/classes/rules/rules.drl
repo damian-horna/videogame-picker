@@ -59,7 +59,7 @@ rule "LastAnswer"
 when
     q: Question(answered==true && chosenAnswer.lastAnswer, chosenAnswer: chosenAnswer)
 then
-    System.out.println(chosenAnswer.getContent());
+    System.out.println("Final answer: " + chosenAnswer.getFinalAnswer());
     retract(q);
 end
 
