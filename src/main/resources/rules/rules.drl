@@ -2,11 +2,107 @@ package pl.put.poznan.cs
 import pl.poznan.put.cs.Question;
 import pl.poznan.put.cs.Answer;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Arrays
+import javax.swing.JOptionPane
+import javax.swing.JPanel
+import javax.swing.JRadioButton
+import javax.swing.ButtonGroup
+import java.awt.GridLayout
+import javax.swing.BorderFactory
+import javax.swing.JLabel
+import javax.swing.AbstractButton
+import java.util.Enumeration;
 
 rule "Initialization"
 when
 then
-    insert(new Question("Question", new ArrayList<String>(Arrays.asList("odp1", "odp2"))));
-    System.out.println("Initialization complete");
+
+    Question q3 = new Question("have robots taken over?", new Answer[]{
+                    new Answer("do cyborgs count?", null, "Bioforge")
+    });
+
+    Question q2 = new Question("are we thinking near or distant future?", new Answer[]{ //TODO replace nulls with correct questions!
+                    new Answer("distant future", q3),
+                    new Answer("near future", null),
+                    new Answer("what about retro future?", null),
+                    new Answer("more like a long time ago in a galaxy far, far away...", null)});
+
+    Question q1 = new Question("LET'S PLAY A GAME! What time period are you thinking?", new Answer[]{
+                    new Answer("FUTURE", q2)});
+
+    insert(q1);
+    insert(q2);
+    //and so on...
 end
+
+rule "AskFirstQuestion"
+when
+    q: Question(answered==false && content.equals("LET'S PLAY A GAME! What time period are you thinking?"))
+then
+    ask(q);
+    update(q);
+end
+
+rule "AskNext"
+when
+    q: Question(answered==true && !chosenAnswer.lastAnswer, chosenAnswer: chosenAnswer)
+then
+    System.out.println("Asking next question...");
+    Question nextQuestion = chosenAnswer.getNextQuestion();
+    ask(nextQuestion);
+    insert(nextQuestion);
+    retract(q);
+end
+
+rule "LastAnswer"
+when
+    q: Question(answered==true && chosenAnswer.lastAnswer, chosenAnswer: chosenAnswer)
+then
+    System.out.println(chosenAnswer.getContent());
+    retract(q);
+end
+
+
+function void ask(Question question) {
+    JPanel panel = new JPanel();
+    panel.setLayout(new GridLayout(question.getAnswers().length + 1, 1));
+    ButtonGroup bgroup = new ButtonGroup();
+    JLabel questionContent = new JLabel();
+    questionContent.setText(question.getContent());
+    panel.add(questionContent);
+
+    for(Answer answer : question.getAnswers()){
+        JRadioButton btn = new JRadioButton(answer.getContent());
+        bgroup.add(btn);
+        panel.add(btn);
+    }
+
+    int n = JOptionPane.showOptionDialog(
+        null,
+        panel,
+        "Selection",
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE,
+        null,
+        null,
+        null
+    );
+
+    if(n==0){
+        System.out.println("selected OK");
+        for (Enumeration<AbstractButton> buttons = bgroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                question.setAnswered(true);
+                System.out.println("Setting answered to true");
+                for(Answer a: question.getAnswers()){
+                    if(a.getContent().equals(button.getText())){
+                        question.setChosenAnswer(a);
+                        System.out.println("Setting chosen answer to a: " + a.getContent());
+                    }
+                }
+            }
+        }
+    }
+}

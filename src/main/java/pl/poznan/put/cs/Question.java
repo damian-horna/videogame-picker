@@ -1,28 +1,35 @@
 package pl.poznan.put.cs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Question {
     private String content;
-    private List<String> answers;
-    private String choice;
+    private Answer[] answers;
+    private boolean answered;
 
-    public Question(String content, List<String> answers) {
+    private Answer chosenAnswer;
+
+    public Question(String content, Answer[] answers) {
         this.content = content;
         this.answers = answers;
-        this.choice=answers.get(0);
+        this.answered = false;
     }
 
     public Question() {
     }
 
-    public String getChoice() {
-        return choice;
+    public Answer getChosenAnswer() {
+        return chosenAnswer;
     }
 
-    public void setChoice(String choice) {
-        this.choice = choice;
+    public void setChosenAnswer(Answer chosenAnswer) {
+        this.chosenAnswer = chosenAnswer;
+    }
+
+    public boolean isAnswered() {
+        return answered;
+    }
+
+    public void setAnswered(boolean answered) {
+        this.answered = answered;
     }
 
     public String getContent() {
@@ -33,11 +40,11 @@ public class Question {
         this.content = content;
     }
 
-    public List<String> getAnswers() {
+    public Answer[] getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<String> answers) {
+    public void setAnswers(Answer[] answers) {
         this.answers = answers;
     }
 }
