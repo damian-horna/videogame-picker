@@ -124,26 +124,6 @@ then
 
     insert(q1);
     insert(q2);
-    insert(q3);
-    insert(q4);
-    insert(q5);
-    insert(q6);
-    insert(q7);
-    insert(q8);
-    insert(q9);
-    insert(q10);
-    insert(q11);
-    insert(q12);
-    insert(q13);
-    insert(q14);
-    insert(q15);
-    insert(q16);
-    insert(q17);
-    insert(q18);
-    insert(q19);
-    insert(q20);
-    insert(q21);
-    insert(q22);
 
 end
 
