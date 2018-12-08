@@ -1,202 +1,201 @@
 package pl.put.poznan.cs
 import pl.poznan.put.cs.Question;
-import pl.poznan.put.cs.Answer;
-import java.util.ArrayList;
-import java.util.Arrays
-import javax.swing.JOptionPane
-import javax.swing.JPanel
-import javax.swing.JRadioButton
-import javax.swing.ButtonGroup
-import java.awt.GridLayout
-import javax.swing.BorderFactory
-import javax.swing.JLabel
-import javax.swing.AbstractButton
-import java.util.Enumeration
-import javax.print.attribute.standard.MediaSize
+import static pl.poznan.put.cs.QuestionUtils.ask;
+import static pl.poznan.put.cs.QuestionUtils.showAnswer;
 
-rule "Initialization"
+//    Question q22 = new Question("you..i like you",new Answer[]{
+//                     new Answer("",Arrays.asList("Star Wars Battlefront II"))
+//    });
+//    Question q21 = new Question("is Luke Skywalker you favorite?",new Answer[]{
+//                    new Answer("Yes",Arrays.asList("Star Wars Jedi Knight: Jedi academy")),
+//                    new Answer("No",Arrays.asList("Star Wars Knights Old Republic"))
+//    });
+//    Question q20 = new Question("i dig lightsabers or guns?",new Answer[]{
+//                    new Answer("guns",Arrays.asList("Star Wars Republic Commando")),
+//                    new Answer("lightsabers"),
+//                    new Answer("why not both?")
+//    });
+//    Question q19 = new Question("worse- what if the 80's never ended?",new Answer[]{
+//                    new Answer("and it's scary",Arrays.asList("Farcry 3 Blood dragon","Routine"))
+//    });
+//    Question q18 = new Question("like, what if the Cold War never ended?",new Answer[]{
+//                    new Answer("yes",Arrays.asList("Red Alert 3 Uprising")),
+//                    new Answer("no")
+//    });
+//    Question q17 = new Question("against who?",new Answer[]{
+//                    new Answer("the police",Arrays.asList("Mirror Edge")),
+//                    new Answer("alien invaders",Arrays.asList("Half-Life 2","Half-Life 2 Episode One","Half-Life 2 Episode Two")),
+//                    new Answer("secret conspiracies",Arrays.asList("Deus Ex","Deus Ex Human Revolution"))
+//    });
+//    Question q16 = new Question("are you thinking with portals?",new Answer[]{
+//                    new Answer("no",Arrays.asList("Quantum Conundrum")),
+//                    new Answer("yes",Arrays.asList("Portal","Portal 2"))
+//    });
+//    Question q15 = new Question("where?",new Answer[]{
+//                    new Answer("Russia",Arrays.asList("Metro 2033")),
+//                    new Answer("America",Arrays.asList("Fallout New Vegas")),
+//                    new Answer("middle of the ocean",Arrays.asList("Oil Rush"))
+//    });
+//    Question q14 = new Question("ok, what are we doing?",new Answer[]{
+//                    new Answer("escaping the computer",Arrays.asList("Thomas was alone... or not that much")),
+//                    new Answer("blowing up bad guys",Arrays.asList("Intrusion 2")),
+//                    new Answer("exploring other plantes",Arrays.asList("Capsized","Wahing Mars")),
+//                    new Answer("surviving the apocalypse"),
+//                    new Answer("doing some science!"),
+//                    new Answer("fighting back!")
+//    });
+//    Question q13 = new Question("...",new Answer[]{
+//                    new Answer("spaceship",Arrays.asList("Harbinger")),
+//                    new Answer("planet",Arrays.asList("Unreal"))
+//    });
+//    Question q12 = new Question("what's keeping you busy?",new Answer[]{
+//                    new Answer("i'm trapped in an alternate dimension",Arrays.asList("The Longest Journey","Dreamfall The Longest Journey")),
+//                    new Answer("i need to reclaim my homeland",Arrays.asList("Home World","Home World 2")),
+//                    new Answer("these bandits attacking me",Arrays.asList("Borderlands 2")),
+//                    new Answer("gravity isn't working",Arrays.asList("Inversion")),
+//                    new Answer("i need to escape this..."),
+//                    new Answer("the oppressive martian government",Arrays.asList("Mars"))
+//    });
+//    Question q11 = new Question("are they family friendly?",new Answer[]{
+//                     new Answer("Yes",Arrays.asList("AwesomeNauts")),
+//                     new Answer("Hell No",Arrays.asList("Unreal Tournament 2004"))
+//    });
+//    Question q10 = new Question("what are you going to do?",new Answer[]{
+//                     new Answer("stop the bad guys",Arrays.asList("Final Fantasy VI")),
+//                     new Answer("build a city",Arrays.asList("Anno 2070"))
+//    });
+//    Question q9 = new Question("what do we fight with?", new Answer[]{
+//                    new Answer("power armor",Arrays.asList("Section 8")),
+//                    new Answer("spaceship",Arrays.asList("FTL"))
+//    });
+//
+//    Question q8 = new Question("oh no! where are you now?", new Answer[]{
+//                    new Answer("in space, where no one can hear you scream",Arrays.asList("Dead space","Dead space 2")),
+//                    new Answer("stranded on the blood-red planet",Arrays.asList("Doom 3"))
+//    });
+//
+//    Question q7 = new Question("are you alone?",new Answer[]{
+//                    new Answer("yes",Arrays.asList("System shock 2")),
+//                    new Answer("No...but yes",Arrays.asList("I have no mouth, and i must scream"))
+//    });
+//    Question q6 = new Question("that's surprsing why not?", new Answer[]{
+//                    new Answer("BECAUSE ALL THESE SPACE ZOMBIES!!"),
+//                    new Answer("too much galactic civil war"),
+//                    new Answer("the planet is dying"),
+//                    new Answer("who cares? murder sports are on!"),
+//                    new Answer("i can't really worry about that now")
+//    });
+//    Question q4 = new Question("what kind of robots?",new Answer[]{
+//                    new Answer("mean robots",Arrays.asList("Supreme Commander","Enslaved","Supreme Commander 2")),
+//                    new Answer("cute robots",Arrays.asList("Machinarium"))
+//    });
+//    Question q5 = new Question("have computers taken over",new Answer[]{
+//                    new Answer("no"),
+//                    new Answer("yes")
+//    });
+//    Question q3 = new Question("have robots taken over?", new Answer[]{
+//                    new Answer("do cyborgs count?", Arrays.asList("Bioforge")),
+//                    new Answer("yes"),
+//                    new Answer("no")
+//    });
+//
+//    Question q2 = new Question("are we thinking near or distant future?", new Answer[]{ //TODO replace nulls with correct questions!
+//                    new Answer("distant future"),
+//                    new Answer("near future"),
+//                    new Answer("what about retro future?"),
+//                    new Answer("more like a long time ago in a galaxy far, far away...")});
+//
+//    Question q1 = new Question("LET'S PLAY A GAME! What time period are you thinking?", new Answer[]{
+//                    new Answer("FUTURE")});
+
+rule "Init"
 when
 then
-    Question q22 = new Question("you..i like you",new Answer[]{
-                     new Answer("",null,Arrays.asList("Star Wars Battlefront II"))
-    });
-    Question q21 = new Question("is Luke Skywalker you favorite?",new Answer[]{
-                    new Answer("Yes",null,Arrays.asList("Star Wars Jedi Knight: Jedi academy")),
-                    new Answer("No",null,Arrays.asList("Star Wars Knights Old Republic"))
-    });
-    Question q20 = new Question("i dig lightsabers or guns?",new Answer[]{
-                    new Answer("guns",null,Arrays.asList("Star Wars Republic Commando")),
-                    new Answer("lightsabers",q21),
-                    new Answer("why not both?",q22)
-    });
-    Question q19 = new Question("worse- what if the 80's never ended?",new Answer[]{
-                    new Answer("and it's scary",null,Arrays.asList("Farcry 3 Blood dragon","Routine"))
-    });
-    Question q18 = new Question("like, what if the Cold War never ended?",new Answer[]{
-                    new Answer("yes",null,Arrays.asList("Red Alert 3 Uprising")),
-                    new Answer("no",q19)
-    });
-    Question q17 = new Question("against who?",new Answer[]{
-                    new Answer("the police",null,Arrays.asList("Mirror Edge")),
-                    new Answer("alien invaders",null,Arrays.asList("Half-Life 2","Half-Life 2 Episode One","Half-Life 2 Episode Two")),
-                    new Answer("secret conspiracies",null,Arrays.asList("Deus Ex","Deus Ex Human Revolution"))
-    });
-    Question q16 = new Question("are you thinking with portals?",new Answer[]{
-                    new Answer("no",null,Arrays.asList("Quantum Conundrum")),
-                    new Answer("yes",null,Arrays.asList("Portal","Portal 2"))
-    });
-    Question q15 = new Question("where?",new Answer[]{
-                    new Answer("Russia",null,Arrays.asList("Metro 2033")),
-                    new Answer("America",null,Arrays.asList("Fallout New Vegas")),
-                    new Answer("middle of the ocean",null,Arrays.asList("Oil Rush"))
-    });
-    Question q14 = new Question("ok, what are we doing?",new Answer[]{
-                    new Answer("escaping the computer",null,Arrays.asList("Thomas was alone... or not that much")),
-                    new Answer("blowing up bad guys",null,Arrays.asList("Intrusion 2")),
-                    new Answer("exploring other plantes",null,Arrays.asList("Capsized","Wahing Mars")),
-                    new Answer("surviving the apocalypse",q15),
-                    new Answer("doing some science!",q16),
-                    new Answer("fighting back!",q17)
-    });
-    Question q13 = new Question("...",new Answer[]{
-                    new Answer("spaceship",null,Arrays.asList("Harbinger")),
-                    new Answer("planet",null,Arrays.asList("Unreal"))
-    });
-    Question q12 = new Question("what's keeping you busy?",new Answer[]{
-                    new Answer("i'm trapped in an alternate dimension",null,Arrays.asList("The Longest Journey","Dreamfall The Longest Journey")),
-                    new Answer("i need to reclaim my homeland",null,Arrays.asList("Home World","Home World 2")),
-                    new Answer("these bandits attacking me",null,Arrays.asList("Borderlands 2")),
-                    new Answer("gravity isn't working",null,Arrays.asList("Inversion")),
-                    new Answer("i need to escape this...",q13),
-                    new Answer("the oppressive martian government",null,Arrays.asList("Mars"))
-    });
-    Question q11 = new Question("are they family friendly?",new Answer[]{
-                     new Answer("Yes",null,Arrays.asList("AwesomeNauts")),
-                     new Answer("Hell No",null,Arrays.asList("Unreal Tournament 2004"))
-    });
-    Question q10 = new Question("what are you going to do?",new Answer[]{
-                     new Answer("stop the bad guys",null,Arrays.asList("Final Fantasy VI")),
-                     new Answer("build a city",null,Arrays.asList("Anno 2070"))
-    });
-    Question q9 = new Question("what do we fight with?", new Answer[]{
-                    new Answer("power armor",null,Arrays.asList("Section 8")),
-                    new Answer("spaceship",null,Arrays.asList("FTL"))
-    });
-
-    Question q8 = new Question("oh no! where are you now?", new Answer[]{
-                    new Answer("in space, where no one can hear you scream",null,Arrays.asList("Dead space","Dead space 2")),
-                    new Answer("stranded on the blood-red planet",null,Arrays.asList("Doom 3"))
-    });
-
-    Question q7 = new Question("are you alone?",new Answer[]{
-                    new Answer("yes",null,Arrays.asList("System shock 2")),
-                    new Answer("No...but yes",null,Arrays.asList("I have no mouth, and i must scream"))
-    });
-    Question q6 = new Question("that's surprsing why not?", new Answer[]{
-                    new Answer("BECAUSE ALL THESE SPACE ZOMBIES!!",q8),
-                    new Answer("too much galactic civil war",q9),
-                    new Answer("the planet is dying",q10),
-                    new Answer("who cares? murder sports are on!",q11),
-                    new Answer("i can't really worry about that now",q12)
-    });
-    Question q4 = new Question("what kind of robots?",new Answer[]{
-                    new Answer("mean robots",null,Arrays.asList("Supreme Commander","Enslaved","Supreme Commander 2")),
-                    new Answer("cute robots",null,Arrays.asList("Machinarium"))
-    });
-    Question q5 = new Question("have computers taken over",new Answer[]{
-                    new Answer("no",q6),
-                    new Answer("yes",q7)
-    });
-    Question q3 = new Question("have robots taken over?", new Answer[]{
-                    new Answer("do cyborgs count?", null, Arrays.asList("Bioforge")),
-                    new Answer("yes",q4),
-                    new Answer("no",q5)
-    });
-
-    Question q2 = new Question("are we thinking near or distant future?", new Answer[]{ //TODO replace nulls with correct questions!
-                    new Answer("distant future", q3),
-                    new Answer("near future", q14),
-                    new Answer("what about retro future?", q18),
-                    new Answer("more like a long time ago in a galaxy far, far away...", q20)});
-
-    Question q1 = new Question("LET'S PLAY A GAME! What time period are you thinking?", new Answer[]{
-                    new Answer("FUTURE", q2)});
-
+    Question q1 = new Question("LET'S PLAY A GAME! What time period are you thinking?", new String[]{
+                    "FUTURE"});
+    ask(q1);
     insert(q1);
+end
+
+rule "Future period"
+when q: Question(
+            content.equals("LET'S PLAY A GAME! What time period are you thinking?")
+            &&
+            chosenAnswer.equals("FUTURE"))
+then
+    Question q2 = new Question("are we thinking near or distant future?", new String[]{
+                    "distant future",
+                    "near future",
+                    "what about retro future?",
+                    "more like a long time ago in a galaxy far, far away..."});
+    ask(q2);
     insert(q2);
-
 end
 
-rule "AskFirstQuestion"
-when
-    q: Question(answered==false && content.equals("LET'S PLAY A GAME! What time period are you thinking?"))
+rule "Distant future"
+when q: Question(
+            content.equals("are we thinking near or distant future?")
+            &&
+            chosenAnswer.equals("distant future"))
 then
-    ask(q);
-    update(q);
+    Question q3 = new Question("have robots taken over?", new String[]{
+                        "do cyborgs count?",
+                        "yes",
+                        "no"});
+    ask(q3);
+    insert(q3);
 end
 
-rule "AskNext"
-when
-    q: Question(answered==true && !chosenAnswer.lastAnswer, chosenAnswer: chosenAnswer)
+rule "Cyborgs do count"
+when q: Question(
+            content.equals("have robots taken over?")
+            &&
+            chosenAnswer.equals("do cyborgs count?"))
 then
-    System.out.println("Asking next question...");
-    Question nextQuestion = chosenAnswer.getNextQuestion();
-    ask(nextQuestion);
-    insert(nextQuestion);
-    update(nextQuestion);
-    retract(q);
+    showAnswer("Bioforge");
 end
 
-rule "LastAnswer"
-when
-    q: Question(answered==true && chosenAnswer.lastAnswer, chosenAnswer: chosenAnswer)
+rule "Robots haven't taken over"
+when q: Question(
+            content.equals("have robots taken over?")
+            &&
+            chosenAnswer.equals("no"))
 then
-    System.out.println("Final answer: " + chosenAnswer.getFinalAnswer());
-    retract(q);
+    Question q5 = new Question("have computers taken over",new String[]{
+                        "no",
+                        "yes"});
+    ask(q5);
+    insert(q5);
 end
 
+rule "Robots have taken over"
+when q: Question(
+            content.equals("have robots taken over?")
+            &&
+            chosenAnswer.equals("yes"))
+then
+    Question q4 = new Question("what kind of robots?",new String[]{
+                    "mean robots",
+                    "cute robots"
+    });
+    ask(q4);
+    insert(q4);
+end
 
+rule "Mean robots"
+when q: Question(
+            content.equals("what kind of robots?")
+            &&
+            chosenAnswer.equals("mean robots"))
+then
+    showAnswer("Supreme Commander, Enslaved, Supreme Commander 2");
+end
 
-function void ask(Question question) {
-    JPanel panel = new JPanel();
-    panel.setLayout(new GridLayout(question.getAnswers().length + 1, 1));
-    ButtonGroup bgroup = new ButtonGroup();
-    JLabel questionContent = new JLabel();
-    questionContent.setText(question.getContent());
-    panel.add(questionContent);
-
-    for(Answer answer : question.getAnswers()){
-        JRadioButton btn = new JRadioButton(answer.getContent());
-        bgroup.add(btn);
-        panel.add(btn);
-    }
-
-    int n = JOptionPane.showOptionDialog(
-        null,
-        panel,
-        "Selection",
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.PLAIN_MESSAGE,
-        null,
-        null,
-        null
-    );
-
-    if(n==0){
-        System.out.println("selected OK");
-        for (Enumeration<AbstractButton> buttons = bgroup.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-
-            if (button.isSelected()) {
-                question.setAnswered(true);
-                System.out.println("Setting answered to true");
-                for(Answer a: question.getAnswers()){
-                    if(a.getContent().equals(button.getText())){
-                        question.setChosenAnswer(a);
-                        System.out.println("Setting chosen answer to a: " + a.getContent());
-                    }
-                }
-            }
-        }
-    }
-}
+rule "Cute robots"
+when q: Question(
+            content.equals("what kind of robots?")
+            &&
+            chosenAnswer.equals("cute robots"))
+then
+    showAnswer("Machinarium");
+end

@@ -2,12 +2,12 @@ package pl.poznan.put.cs;
 
 public class Question {
     private String content;
-    private Answer[] answers;
+    private String[] answers;
     private boolean answered;
 
-    private Answer chosenAnswer;
+    private String chosenAnswer;
 
-    public Question(String content, Answer[] answers) {
+    public Question(String content, String[] answers) {
         this.content = content;
         this.answers = answers;
         this.answered = false;
@@ -16,11 +16,19 @@ public class Question {
     public Question() {
     }
 
-    public Answer getChosenAnswer() {
+    public String[] getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(String[] answers) {
+        this.answers = answers;
+    }
+
+    public String getChosenAnswer() {
         return chosenAnswer;
     }
 
-    public void setChosenAnswer(Answer chosenAnswer) {
+    public void setChosenAnswer(String chosenAnswer) {
         this.chosenAnswer = chosenAnswer;
     }
 
@@ -38,13 +46,5 @@ public class Question {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Answer[] getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(Answer[] answers) {
-        this.answers = answers;
     }
 }
