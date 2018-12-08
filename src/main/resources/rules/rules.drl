@@ -1,7 +1,8 @@
 package pl.put.poznan.cs
 import pl.poznan.put.cs.Question;
 import static pl.poznan.put.cs.QuestionUtils.ask;
-import static pl.poznan.put.cs.QuestionUtils.showAnswer;
+import static pl.poznan.put.cs.QuestionUtils.showAnswer
+import org.mvel2.util.Make;
 
 //    Question q22 = new Question("you..i like you",new Answer[]{
 //                     new Answer("",Arrays.asList("Star Wars Battlefront II"))
@@ -132,19 +133,293 @@ then
     insert(q2);
 end
 
-rule "Distant future"
+rule "both"
+when q: Question(
+        content.equals("i dig lightsabers or guns?")
+        &&
+        chosenAnswer.equals("why not both?"))
+then
+  Question q33 = new Question(":)", new String[]{
+                         "you... i like you"
+                         });
+     ask(q33);
+     insert(q33);
+ end
+
+rule "..."
+when q: Question(
+        content.equals(":)")
+        &&
+        chosenAnswer.equals("you... i like you"))
+then
+showAnswer("Star Wars Battlefront II");
+end
+
+rule "galaxy"
 when q: Question(
             content.equals("are we thinking near or distant future?")
             &&
-            chosenAnswer.equals("distant future"))
+            chosenAnswer.equals("more like a long time ago in a galaxy far, far away..."))
 then
-    Question q3 = new Question("have robots taken over?", new String[]{
-                        "do cyborgs count?",
-                        "yes",
-                        "no"});
-    ask(q3);
-    insert(q3);
+    Question q30 = new Question("i dig lightsabers or guns?", new String[]{
+                        "lightsabers",
+                        "guns",
+                        "why not both?"
+                        });
+    ask(q30);
+    insert(q30);
 end
+
+rule "sabers"
+when q: Question(
+        content.equals("i dig lightsabers or guns?")
+        &&
+        chosenAnswer.equals("lightsabers"))
+then
+  Question q31 = new Question("is Luke Skywalker you favorite?", new String[]{
+                         "yes",
+                         "no"
+                         });
+     ask(q31);
+     insert(q31);
+ end
+
+rule "sabers2"
+when q: Question(
+        content.equals("is Luke Skywalker you favorite?")
+        &&
+        chosenAnswer.equals("yes"))
+then
+ showAnswer("Star Wars Jedi Knight: Jedi Academy");
+ end
+
+rule "sabers3"
+when q: Question(
+        content.equals("is Luke Skywalker you favorite?")
+        &&
+        chosenAnswer.equals("no"))
+then
+ showAnswer("Star Wars Knights: Old Republic");
+ end
+
+
+rule "guns"
+when q: Question(
+        content.equals("i dig lightsabers or guns?")
+        &&
+        chosenAnswer.equals("guns"))
+then
+ showAnswer("Star Wars Republic Commando");
+ end
+
+rule "retro future"
+when q: Question(
+            content.equals("are we thinking near or distant future?")
+            &&
+            chosenAnswer.equals("what about retro future?"))
+then
+    Question q27 = new Question("like, what if the Cold War never ended?", new String[]{
+                        "yes",
+                        "no"
+                        });
+
+    ask(q27);
+    insert(q27);
+end
+
+rule "cold war2"
+when q: Question(
+        content.equals("like, what if the Cold War never ended?")
+        &&
+        chosenAnswer.equals("no"))
+then
+Question q28 = new Question("worse- what if the 80's never ended?", new String[]{
+                        "and it's scary"
+                        });
+    ask(q28);
+    insert(q28);
+end
+
+rule "cold war"
+when q: Question(
+        content.equals("worse- what if the 80's never ended?")
+        &&
+        chosenAnswer.equals("and it's scary"))
+then
+ showAnswer("Far Cry 3 Blood Dragon, Routine");
+ end
+
+rule "cold war4"
+when q: Question(
+        content.equals("like, what if the Cold War never ended?")
+        &&
+        chosenAnswer.equals("yes"))
+then
+ showAnswer("Red Alert 3");
+ end
+
+rule "Near future"
+when q: Question(
+            content.equals("are we thinking near or distant future?")
+            &&
+            chosenAnswer.equals("near future"))
+then
+    Question q23 = new Question("ok, what are we doing?", new String[]{
+                        "escaping the computer",
+                        "blowing up bad guys",
+                        "exploring other plantes",
+                        "surviving the apocalypse",
+                        "doing some science!",
+                        "fighting back!"
+                        });
+
+    ask(q23);
+    insert(q23);
+end
+
+rule "fighting"
+when q: Question(
+            content.equals("ok, what are we doing?")
+            &&
+            chosenAnswer.equals("fighting back!"))
+then
+    Question q26 = new Question("against who?", new String[]{
+                    "alien invaders",
+                    "secret conspiracies",
+                    "the police"
+                    });
+    ask(q26);
+    insert(q26);
+end
+
+rule "police"
+when q: Question(
+        content.equals("against twho?")
+        &&
+        chosenAnswer.equals("the police"))
+then
+ showAnswer("Mirrors Edge");
+ end
+
+rule "cons"
+when q: Question(
+        content.equals("against who?")
+        &&
+        chosenAnswer.equals("secret conspiracies"))
+then
+ showAnswer("Deus Ex, Deus Ex: Human Revolution");
+ end
+
+rule "alien"
+when q: Question(
+        content.equals("against who?")
+        &&
+        chosenAnswer.equals("alien invaders"))
+then
+ showAnswer("Half-Life 2, Half-Life 2 Episode One, Half-Life 2 Episode Two");
+ end
+
+rule "surviving"
+when q: Question(
+            content.equals("ok, what are we doing?")
+            &&
+            chosenAnswer.equals("surviving the apocalypse"))
+then
+    Question q25 = new Question("where?", new String[]{
+                    "Russia",
+                    "America",
+                    "middle of the ocean"
+                    });
+    ask(q25);
+    insert(q25);
+end
+
+rule "Russia"
+when q: Question(
+        content.equals("where?")
+        &&
+        chosenAnswer.equals("Russia"))
+then
+ showAnswer("Metro2033");
+ end
+
+rule "America"
+when q: Question(
+        content.equals("where?")
+        &&
+        chosenAnswer.equals("America"))
+then
+ showAnswer("Fallout New Vegas");
+ end
+
+ rule "middle"
+ when q: Question(
+         content.equals("where?")
+         &&
+         chosenAnswer.equals("middle of the ocean"))
+ then
+  showAnswer("Oil Rush");
+  end
+
+rule "doing some science"
+when q: Question(
+            content.equals("ok, what are we doing?")
+            &&
+            chosenAnswer.equals("doing some science!"))
+then
+    Question q24 = new Question("are you thinking with portals?", new String[]{
+                    "yes",
+                    "no"
+                    });
+    ask(q24);
+    insert(q24);
+end
+
+rule "doing some science-yes"
+when q: Question(
+        content.equals("are you thinking with portals?")
+        &&
+        chosenAnswer.equals("yes"))
+then
+ showAnswer("Portal, Portal 2");
+ end
+
+rule "doing some science-no"
+when q: Question(
+        content.equals("are you thinking with portals?")
+        &&
+        chosenAnswer.equals("no"))
+then
+ showAnswer("Quantum Conundrum");
+ end
+
+rule "escaping the computer"
+when    q: Question(
+                    content.equals("ok, what are we doing?")
+                    &&
+                    chosenAnswer.equals("escaping the computer"))
+then
+    showAnswer("Thomas was alone... or not that much");
+end
+
+rule "blowing up bad guys"
+when    q: Question(
+                    content.equals("ok, what are we doing?")
+                    &&
+                    chosenAnswer.equals("blowing up bad guys"))
+then
+    showAnswer("Intrusion 2");
+end
+
+rule "exploring other plantes"
+when    q: Question(
+                    content.equals("ok, what are we doing?")
+                    &&
+                    chosenAnswer.equals("exploring other plantes"))
+then
+    showAnswer("Capsized, Wahing Mars");
+end
+
 
 rule "Cyborgs do count"
 when q: Question(
