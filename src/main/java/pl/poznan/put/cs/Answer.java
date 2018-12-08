@@ -5,20 +5,17 @@ import java.util.List;
 
 public class Answer {
     private String content;
-    private Question nextQuestion;
     private boolean isLastAnswer;
     private List<String> finalAnswer = new ArrayList<String>();
 
-    public Answer(String content, Question nextQuestion, List<String> finalAnswer) {
+    public Answer(String content, List<String> finalAnswer) {
         this.content = content;
-        this.nextQuestion = nextQuestion;
         this.isLastAnswer = true;
         this.finalAnswer = finalAnswer;
     }
 
-    public Answer(String content, Question nextQuestion) {
+    public Answer(String content) {
         this.content = content;
-        this.nextQuestion = nextQuestion;
         this.isLastAnswer = false;
     }
 
@@ -28,14 +25,6 @@ public class Answer {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Question getNextQuestion() {
-        return nextQuestion;
-    }
-
-    public void setNextQuestion(Question nextQuestion) {
-        this.nextQuestion = nextQuestion;
     }
 
     public boolean isLastAnswer() {
