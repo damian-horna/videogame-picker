@@ -161,7 +161,7 @@ when q: Question(
             &&
             chosenAnswer.equals("no"))
 then
-    Question q5 = new Question("have computers taken over",new String[]{
+    Question q5 = new Question("have computers taken over?",new String[]{
                         "no",
                         "yes"});
     ask(q5);
@@ -199,3 +199,273 @@ when q: Question(
 then
     showAnswer("Machinarium");
 end
+
+rule "Computers haven't taken over"
+when q: Question(
+            content.equals("have computers taken over?")
+            &&
+            chosenAnswer.equals("no"))
+then
+        Question q6 = new Question("that's surprsing why not?", new String[]{
+                        "BECAUSE ALL THESE SPACE ZOMBIES!!",
+                        "too much galactic civil war",
+                        "the planet is dying",
+                        "who cares? murder sports are on!",
+                        "i can't really worry about that now"});
+    ask(q6);
+    insert(q6);
+end
+
+rule "Computers have taken over"
+when q: Question(
+            content.equals("have computers taken over?")
+            &&
+            chosenAnswer.equals("yes"))
+then
+    Question q7 = new Question("are you alone?",new String[]{
+                    "yes",
+                    "No...but yes"});
+
+    ask(q7);
+    insert(q7);
+end
+
+
+rule "Alone"
+when q: Question(
+            content.equals("are you alone?")
+            &&
+            chosenAnswer.equals("yes"))
+then
+    showAnswer("System shock 2");
+end
+
+rule "Not alone but alone"
+when q: Question(
+            content.equals("are you alone?")
+            &&
+            chosenAnswer.equals("No...but yes"))
+then
+    showAnswer("I have no mouth, and i must scream");
+end
+
+
+rule "Space zombies"
+when q: Question(
+            content.equals("that's surprsing why not?")
+            &&
+            chosenAnswer.equals("BECAUSE ALL THESE SPACE ZOMBIES!!"))
+then
+    Question q8 = new Question("oh no! where are you now?", new String[]{
+                    "in space, where no one can hear you scream",
+                    "stranded on the blood-red planet"});
+    ask(q8);
+    insert(q8);
+end
+
+rule "In space"
+when q: Question(
+            content.equals("oh no! where are you now?")
+            &&
+            chosenAnswer.equals("in space, where no one can hear you scream"))
+then
+    showAnswer("Dead space, Dead space 2");
+end
+
+rule "Stranded"
+when q: Question(
+            content.equals("oh no! where are you now?")
+            &&
+            chosenAnswer.equals("stranded on the blood-red planet"))
+then
+    showAnswer("Doom 3");
+end
+
+rule "Galactic civil war"
+when q: Question(
+            content.equals("that's surprsing why not?")
+            &&
+            chosenAnswer.equals("too much galactic civil war"))
+then
+    Question q9 = new Question("what do we fight with?", new String[]{
+                    "power armor",
+                    "spaceship"});
+    ask(q9);
+    insert(q9);
+end
+
+rule "Power armor"
+when q: Question(
+            content.equals("what do we fight with?")
+            &&
+            chosenAnswer.equals("power armor"))
+then
+    showAnswer("Section 3");
+end
+
+rule "Spaceship"
+when q: Question(
+            content.equals("what do we fight with?")
+            &&
+            chosenAnswer.equals("spaceship"))
+then
+    showAnswer("FTL");
+end
+
+rule "Planet dying"
+when q: Question(
+            content.equals("that's surprsing why not?")
+            &&
+            chosenAnswer.equals("the planet is dying"))
+then
+    Question q10 = new Question("what are you going to do?",new String[]{
+                     "stop the bad guys",
+                     "build a city"});
+    ask(q10);
+    insert(q10);
+end
+
+rule "Stop the bad guys"
+when q: Question(
+            content.equals("what are you going to do?")
+            &&
+            chosenAnswer.equals("stop the bad guys"))
+then
+    showAnswer("Final Fantasy VI");
+end
+
+rule "Build a city"
+when q: Question(
+            content.equals("what are you going to do?")
+            &&
+            chosenAnswer.equals("build a city"))
+then
+    showAnswer("Anno 2070");
+end
+
+rule "Murder sports are on"
+when q: Question(
+            content.equals("that's surprsing why not?")
+            &&
+            chosenAnswer.equals("who cares? murder sports are on!"))
+then
+    Question q11 = new Question("are they family friendly?",new String[]{
+                     "Yes",
+                     "Hell No"});
+    ask(q11);
+    insert(q11);
+end
+
+rule "Family friendly"
+when q: Question(
+            content.equals("are they family friendly?")
+            &&
+            chosenAnswer.equals("Yes"))
+then
+    showAnswer("AwesomeNauts");
+end
+
+rule "Not family friendly"
+when q: Question(
+            content.equals("are they family friendly?")
+            &&
+            chosenAnswer.equals("Hell No"))
+then
+    showAnswer("Unreal Tournament 2004");
+end
+
+rule "Can't worry about that now"
+when q: Question(
+            content.equals("that's surprsing why not?")
+            &&
+            chosenAnswer.equals("i can't really worry about that now"))
+then
+    Question q12 = new Question("what's keeping you busy?",new String[]{
+                   "i'm trapped in an alternate dimension",
+                   "i need to reclaim my homeland",
+                   "these bandits attacking me",
+                   "gravity isn't working",
+                   "i need to escape this...",
+                   "the oppressive martian government"});
+    ask(q12);
+    insert(q12);
+end
+
+rule "Trapped in alternate dimesion"
+when q: Question(
+            content.equals("what's keeping you busy?")
+            &&
+            chosenAnswer.equals("i'm trapped in an alternate dimension"))
+then
+    showAnswer("The Longest Journey, Dreamfall The Longest Journey");
+end
+
+rule "Reclaim homeland"
+when q: Question(
+            content.equals("what's keeping you busy?")
+            &&
+            chosenAnswer.equals("i need to reclaim my homeland"))
+then
+    showAnswer("Home World, Home World 2");
+end
+
+rule "Bandits"
+when q: Question(
+            content.equals("what's keeping you busy?")
+            &&
+            chosenAnswer.equals("these bandits attacking me"))
+then
+    showAnswer("Borderlands 2");
+end
+
+rule "Zero gravity"
+when q: Question(
+            content.equals("what's keeping you busy?")
+            &&
+            chosenAnswer.equals("gravity isn't working"))
+then
+    showAnswer("Inversion");
+end
+
+rule "Marsian government"
+when q: Question(
+            content.equals("what's keeping you busy?")
+            &&
+            chosenAnswer.equals("the oppressive martian government"))
+then
+    showAnswer("Mars");
+end
+
+rule "Escape"
+when q: Question(
+            content.equals("what's keeping you busy?")
+            &&
+            chosenAnswer.equals("i need to escape this..."))
+then
+    Question q13 = new Question("...",new String[]{
+                    "spaceship",
+                    "planet"});
+    ask(q13);
+    insert(q13);
+end
+
+
+rule "Escape planet"
+when q: Question(
+            content.equals("...")
+            &&
+            chosenAnswer.equals("spaceship"))
+then
+    showAnswer("Harbinger");
+end
+
+rule "Escape spaceship"
+when q: Question(
+            content.equals("...")
+            &&
+            chosenAnswer.equals("planet"))
+then
+    showAnswer("Unreal");
+end
+
+
