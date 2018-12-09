@@ -27,26 +27,25 @@ then
     insert(q2);
 end
 
-rule "both"
+rule "Both"
 when q: Question(
-        content.equals("i dig lightsabers or guns?")
-        &&
-        chosenAnswer.equals("why not both?"))
+            content.equals("i dig lightsabers or guns?")
+            &&
+            chosenAnswer.equals("why not both?"))
 then
-  Question q33 = new Question(":)", new String[]{
-                         "you... i like you"
-                         });
-     ask(q33);
-     insert(q33);
- end
+    Question q33 = new Question(":)", new String[]{
+                         "you... i like you"});
+    ask(q33);
+    insert(q33);
+end
 
 rule "..."
 when q: Question(
-        content.equals(":)")
-        &&
-        chosenAnswer.equals("you... i like you"))
+            content.equals(":)")
+            &&
+            chosenAnswer.equals("you... i like you"))
 then
-showAnswer("Star Wars Battlefront II");
+    showAnswer("Star Wars Battlefront II");
 end
 
 rule "galaxy"
@@ -58,55 +57,53 @@ then
     Question q30 = new Question("i dig lightsabers or guns?", new String[]{
                         "lightsabers",
                         "guns",
-                        "why not both?"
-                        });
+                        "why not both?"});
     ask(q30);
     insert(q30);
 end
 
 rule "sabers"
 when q: Question(
-        content.equals("i dig lightsabers or guns?")
-        &&
-        chosenAnswer.equals("lightsabers"))
+            content.equals("i dig lightsabers or guns?")
+            &&
+            chosenAnswer.equals("lightsabers"))
 then
-  Question q31 = new Question("is Luke Skywalker you favorite?", new String[]{
+     Question q31 = new Question("is Luke Skywalker you favorite?", new String[]{
                          "yes",
-                         "no"
-                         });
+                         "no"});
      ask(q31);
      insert(q31);
  end
 
-rule "sabers2"
+rule "Sabers2"
 when q: Question(
-        content.equals("is Luke Skywalker you favorite?")
-        &&
-        chosenAnswer.equals("yes"))
+            content.equals("is Luke Skywalker you favorite?")
+            &&
+            chosenAnswer.equals("yes"))
 then
- showAnswer("Star Wars Jedi Knight: Jedi Academy");
- end
+    showAnswer("Star Wars Jedi Knight: Jedi Academy");
+end
 
-rule "sabers3"
+rule "Sabers3"
 when q: Question(
-        content.equals("is Luke Skywalker you favorite?")
-        &&
-        chosenAnswer.equals("no"))
+            content.equals("is Luke Skywalker you favorite?")
+            &&
+            chosenAnswer.equals("no"))
 then
- showAnswer("Star Wars Knights: Old Republic");
- end
+    showAnswer("Star Wars Knights: Old Republic");
+end
 
 
-rule "guns"
+rule "Guns"
 when q: Question(
-        content.equals("i dig lightsabers or guns?")
-        &&
-        chosenAnswer.equals("guns"))
+            content.equals("i dig lightsabers or guns?")
+            &&
+            chosenAnswer.equals("guns"))
 then
- showAnswer("Star Wars Republic Commando");
- end
+    showAnswer("Star Wars Republic Commando");
+end
 
-rule "retro future"
+rule "Eetro future"
 when q: Question(
             content.equals("are we thinking near or distant future?")
             &&
@@ -121,36 +118,36 @@ then
     insert(q27);
 end
 
-rule "cold war2"
+rule "Cold war2"
 when q: Question(
-        content.equals("like, what if the Cold War never ended?")
-        &&
-        chosenAnswer.equals("no"))
+            content.equals("like, what if the Cold War never ended?")
+            &&
+            chosenAnswer.equals("no"))
 then
-Question q28 = new Question("worse- what if the 80's never ended?", new String[]{
+    Question q28 = new Question("worse- what if the 80's never ended?", new String[]{
                         "and it's scary"
                         });
     ask(q28);
     insert(q28);
 end
 
-rule "cold war"
+rule "Cold war"
 when q: Question(
-        content.equals("worse- what if the 80's never ended?")
-        &&
-        chosenAnswer.equals("and it's scary"))
+            content.equals("worse- what if the 80's never ended?")
+            &&
+            chosenAnswer.equals("and it's scary"))
 then
- showAnswer("Far Cry 3 Blood Dragon, Routine");
- end
+    showAnswer("Far Cry 3 Blood Dragon, Routine");
+end
 
-rule "cold war4"
+rule "Cold war4"
 when q: Question(
-        content.equals("like, what if the Cold War never ended?")
-        &&
-        chosenAnswer.equals("yes"))
+            content.equals("like, what if the Cold War never ended?")
+            &&
+            chosenAnswer.equals("yes"))
 then
- showAnswer("Red Alert 3");
- end
+    showAnswer("Red Alert 3");
+end
 
 rule "Near future"
 when q: Question(
@@ -164,14 +161,13 @@ then
                         "exploring other plantes",
                         "surviving the apocalypse",
                         "doing some science!",
-                        "fighting back!"
-                        });
+                        "fighting back!"});
 
     ask(q23);
     insert(q23);
 end
 
-rule "fighting"
+rule "Fighting"
 when q: Question(
             content.equals("ok, what are we doing?")
             &&
@@ -180,40 +176,39 @@ then
     Question q26 = new Question("against who?", new String[]{
                     "alien invaders",
                     "secret conspiracies",
-                    "the police"
-                    });
+                    "the police"});
     ask(q26);
     insert(q26);
 end
 
-rule "police"
+rule "Police"
 when q: Question(
-        content.equals("against twho?")
-        &&
-        chosenAnswer.equals("the police"))
+            content.equals("against twho?")
+            &&
+            chosenAnswer.equals("the police"))
 then
- showAnswer("Mirrors Edge");
- end
+    showAnswer("Mirrors Edge");
+end
 
-rule "cons"
+rule "Cons"
 when q: Question(
-        content.equals("against who?")
-        &&
-        chosenAnswer.equals("secret conspiracies"))
+            content.equals("against who?")
+            &&
+            chosenAnswer.equals("secret conspiracies"))
 then
- showAnswer("Deus Ex, Deus Ex: Human Revolution");
- end
+    showAnswer("Deus Ex, Deus Ex: Human Revolution");
+end
 
-rule "alien"
+rule "Alien"
 when q: Question(
-        content.equals("against who?")
-        &&
-        chosenAnswer.equals("alien invaders"))
+            content.equals("against who?")
+            &&
+            chosenAnswer.equals("alien invaders"))
 then
- showAnswer("Half-Life 2, Half-Life 2 Episode One, Half-Life 2 Episode Two");
- end
+    showAnswer("Half-Life 2, Half-Life 2 Episode One, Half-Life 2 Episode Two");
+end
 
-rule "surviving"
+rule "Surviving"
 when q: Question(
             content.equals("ok, what are we doing?")
             &&
@@ -222,40 +217,39 @@ then
     Question q25 = new Question("where?", new String[]{
                     "Russia",
                     "America",
-                    "middle of the ocean"
-                    });
+                    "middle of the ocean"});
     ask(q25);
     insert(q25);
 end
 
 rule "Russia"
 when q: Question(
-        content.equals("where?")
-        &&
-        chosenAnswer.equals("Russia"))
+            content.equals("where?")
+            &&
+            chosenAnswer.equals("Russia"))
 then
- showAnswer("Metro2033");
- end
+    showAnswer("Metro2033");
+end
 
 rule "America"
 when q: Question(
-        content.equals("where?")
-        &&
-        chosenAnswer.equals("America"))
+            content.equals("where?")
+            &&
+            chosenAnswer.equals("America"))
 then
- showAnswer("Fallout New Vegas");
- end
+    showAnswer("Fallout New Vegas");
+end
 
- rule "middle"
- when q: Question(
+rule "Middle"
+when q: Question(
          content.equals("where?")
          &&
          chosenAnswer.equals("middle of the ocean"))
- then
-  showAnswer("Oil Rush");
-  end
+then
+    showAnswer("Oil Rush");
+end
 
-rule "doing some science"
+rule "Doing some science"
 when q: Question(
             content.equals("ok, what are we doing?")
             &&
@@ -263,53 +257,52 @@ when q: Question(
 then
     Question q24 = new Question("are you thinking with portals?", new String[]{
                     "yes",
-                    "no"
-                    });
+                    "no"});
     ask(q24);
     insert(q24);
 end
 
-rule "doing some science-yes"
+rule "Doing some science-yes"
 when q: Question(
-        content.equals("are you thinking with portals?")
-        &&
-        chosenAnswer.equals("yes"))
+            content.equals("are you thinking with portals?")
+            &&
+            chosenAnswer.equals("yes"))
 then
- showAnswer("Portal, Portal 2");
- end
+    showAnswer("Portal, Portal 2");
+end
 
-rule "doing some science-no"
+rule "Doing some science-no"
 when q: Question(
-        content.equals("are you thinking with portals?")
-        &&
-        chosenAnswer.equals("no"))
+            content.equals("are you thinking with portals?")
+            &&
+            chosenAnswer.equals("no"))
 then
- showAnswer("Quantum Conundrum");
- end
+    showAnswer("Quantum Conundrum");
+end
 
-rule "escaping the computer"
+rule "Escaping the computer"
 when    q: Question(
-                    content.equals("ok, what are we doing?")
-                    &&
-                    chosenAnswer.equals("escaping the computer"))
+                content.equals("ok, what are we doing?")
+                &&
+                chosenAnswer.equals("escaping the computer"))
 then
     showAnswer("Thomas was alone... or not that much");
 end
 
-rule "blowing up bad guys"
-when    q: Question(
-                    content.equals("ok, what are we doing?")
-                    &&
-                    chosenAnswer.equals("blowing up bad guys"))
+rule "Blowing up bad guys"
+when q: Question(
+            content.equals("ok, what are we doing?")
+            &&
+            chosenAnswer.equals("blowing up bad guys"))
 then
     showAnswer("Intrusion 2");
 end
 
-rule "exploring other plantes"
-when    q: Question(
-                    content.equals("ok, what are we doing?")
-                    &&
-                    chosenAnswer.equals("exploring other plantes"))
+rule "Exploring other plantes"
+when q: Question(
+            content.equals("ok, what are we doing?")
+            &&
+            chosenAnswer.equals("exploring other plantes"))
 then
     showAnswer("Capsized, Wahing Mars");
 end
