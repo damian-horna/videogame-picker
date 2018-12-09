@@ -27,6 +27,20 @@ then
     insert(q2);
 end
 
+rule "Distant future"
+when q: Question(
+            content.equals("are we thinking near or distant future?")
+            &&
+            chosenAnswer.equals("distant future"))
+then
+    Question q3 = new Question("have robots taken over?", new String[]{
+                    "yes",
+                    "no",
+                    "do cyborgs count?"});
+    ask(q3);
+    insert(q3);
+end
+
 rule "Both"
 when q: Question(
             content.equals("i dig lightsabers or guns?")
@@ -183,7 +197,7 @@ end
 
 rule "Police"
 when q: Question(
-            content.equals("against twho?")
+            content.equals("against who?")
             &&
             chosenAnswer.equals("the police"))
 then
